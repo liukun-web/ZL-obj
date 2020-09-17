@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Vant from 'vant'
-import './style/index.less'
 import 'vant/lib/index.css'
 import 'amfe-flexible'
+import './style/index.less'
 
 Vue.use(Vant)
 
