@@ -1,6 +1,8 @@
 <template>
   <div class="login-container">
-      <van-nav-bar class="page-nav-bar" title="登录"/>
+      <van-nav-bar class="page-nav-bar" title="登录" >
+        <van-icon slot="left" name="cross" size="20" @click="$router.back()"/>
+      </van-nav-bar>
 
       <van-form @submit="onSubmit" ref="loginForm">
         <van-field v-model="user.mobile" name="mobile" placeholder="请输入手机号" :rules="userFormRules.mobile" type="number" maxlength="11" >
@@ -60,6 +62,7 @@ export default {
         const { data } = await login(user)
         this.$store.commit('setUser', data.data)
         this.$toast.success({ message: '登录成功', forbidClick: true })
+        this.$router.back()
       } catch (error) {
         if (error.response.status === 400) {
           this.$toast.fail({ message: '手机或验证码错误' })
